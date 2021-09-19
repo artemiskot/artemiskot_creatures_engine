@@ -1,7 +1,7 @@
 const { MODE } = require("./blendMode.js");
 const description =
-  "This is the description of your NFT project, remember to replace this";
-const baseUri = "https://hashlips/nft";
+  "This engine was created to generate random characters out of different layers";
+const baseUri = "https://github.com/artemiskot";
 
 const layerConfigurations = [
   {
