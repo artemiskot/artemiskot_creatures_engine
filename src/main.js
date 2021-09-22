@@ -22,6 +22,9 @@ var metadataList = [];
 var attributesList = [];
 var dnaList = [];
 
+var excludeMap = [[],[],[],[],[],[],['Hand_3'],[]]
+var handItemMap = new Map();
+handItemMap.set('Hand_3');
 const buildSetup = () => {
   if (fs.existsSync(buildDir)) {
     fs.rmdirSync(buildDir, { recursive: true });
@@ -161,16 +164,15 @@ const createDna = (_layers) => {
     layer.elements.forEach((element) => {
       totalWeight += element.weight;
     });
-    // number between 0 - totalWeight
     let random = Math.floor(Math.random() * totalWeight);
     for (var i = 0; i < layer.elements.length; i++) {
-      // subtract the current weight from the random weight until we reach a sub zero value.
       random -= layer.elements[i].weight;
-      if (random < 0) {
+      //TO DO  && layer.find(el => el.filename === excludeMap[`${layer.elements[i].filename}`]) ++ NEXT VERSION && layerConfigurations.layersOrder[i].mandatory
+      if(random < 0 ){
         return randNum.push(
           `${layer.elements[i].id}:${layer.elements[i].filename}`
         );
-      }
+      } //else if(random < 0 && layer.elements[i].name != excludeMap){
     }
   });
   return randNum;
@@ -210,7 +212,6 @@ const startCreating = async () => {
         results.forEach((layer) => {
           loadedElements.push(loadLayerImg(layer));
         });
-
         await Promise.all(loadedElements).then((renderObjectArray) => {
           ctx.clearRect(0, 0, format.width, format.height);
           if (background.generate) {
@@ -235,7 +236,7 @@ const startCreating = async () => {
         failedCount++;
         if (failedCount >= uniqueDnaTorrance) {
           console.log(
-            `You need more layers or elements to grow your edition to ${layerConfigurations[layerConfigIndex].growEditionSizeTo} artworks!`
+            `We need more layers or elements to grow edition to ${layerConfigurations[layerConfigIndex].growEditionSizeTo} creatures!`
           );
           process.exit();
         }

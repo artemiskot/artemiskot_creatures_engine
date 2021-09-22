@@ -5,15 +5,58 @@ const baseUri = "https://github.com/artemiskot";
 
 const layerConfigurations = [
   {
-    growEditionSizeTo: 20,
+    growEditionSizeTo: 3,
     layersOrder: [
-      { name: "Background" },
-      { name: "Body" },
-      { name: "Face" },
-      { name: "Implant" },
-      { name : "Haircut"},
-      { name: "Hand" },
-      { name : "HandItem"}
+      { 
+        name: "Background"
+      },
+      { 
+        name: "Body" 
+      },
+      { 
+        name: "Face"
+      },
+      { 
+        name: "Implant"
+      },
+      {
+        name: "Masks"
+      },
+      { 
+        name : "Haircut"
+      },
+      { 
+        name : "HandWithItem"
+      },
+    ],
+  },
+  {
+    growEditionSizeTo: 43,
+    layersOrder: [
+      { 
+        name: "Background"
+      },
+      { 
+        name: "Body"
+      },
+      { 
+        name: "Face"
+      },
+      { 
+        name: "Implant"
+      },
+      {
+        name: "Masks"
+      },
+      { 
+        name : "Haircut"
+      },
+      { 
+        name: "Hand"
+      },
+      { 
+        name : "HandItem"
+      },
     ],
   },
 ];
